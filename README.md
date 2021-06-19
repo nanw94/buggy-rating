@@ -97,4 +97,27 @@ The Next page button doesn't get disabled even if it's alreay page 6 of 5.
 The Max Speed for a Lamborghini shouldn't be 25km/h
 
 
- 
+## Test appoach
+
+
+#### Manual testing phase
+
+ 1. Explore the web app from home page and top bar and observe the
+    changes in the url to get rough idea about the hierarchy of the
+    pages and put it into a mindmap.    
+ 2. For each kind of the pages, try the functionalities with valid data and prioritize them in the mindmap.
+ 3. Try with various data and actions to try to break it.
+ 4. Start with the high priority functions like voting and ranking, observe the communication between frontend and backend with inspect panel opened
+    in Chrome to figure out how those key API work.
+ 5. Open Insomnia to try the APIs for a better understanding of the authrorization and payloads for later use in automation.
+ 6. Try the app in more browsers like Safari or Firefox and with the mobile.
+ 7. Take notes for issues found.  
+
+#### Automation phase
+
+ - Automate the main workflow from sign-in, open a model detail page, all the way to comment and vote with hard-coded test data. 
+ - Add assertions and improve the stability.
+ - Create a few functions to generate test data like user and comments.
+ - Create a few functions on API level for sign-up, sign-in and voting for better stability and performance.
+ - Organzie the functions with page object mode for a better readibility and maintenance.
+ - Organize the tests with hooks and make sure the independency of each tests.
