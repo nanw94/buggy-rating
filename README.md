@@ -1,15 +1,17 @@
 # Automated tests for Buggy Cars Rating
 
-### Setup
+## Run the automated tests
+
+#### Setup
 `git clone https://github.com/nanw94/buggy-rating.git`   # clone
 
 `cd buggy-rating`  # go to project folder
 
 `npm install`   # install dependencies
 
-### Run the tests in cypress runner
+#### Run the tests in cypress runner
 `npx cypress open`  # then click Tests.js in the runner
-### Or run the tests in command-line
+#### Or run the tests in command-line
 `npx cypress run` 
 
 ## Critical bugs found
@@ -34,6 +36,7 @@ Unable to load the details of the page due to vertical line in the URL
 In Chrome the vertical line in the URL can be converted to “%7C” automatically so the request can be successfully sent, however not all the browser or device can do the same so need to avoid using | divider in the url
 
 
+
 #### Bug-2 Sorting by rank doesn’t work right in overall rating page
 
 > Steps:
@@ -48,6 +51,8 @@ Rank gets sorted as 1,2,3,4..
 > Actual:
 
 Rank gets sorted as 1,10,11,12...19, 2, 20, 21…
+
+
 #### Bug-3 Author is missing for the model which has more than 100 comments in the response payload
 > Steps:
 
@@ -65,11 +70,10 @@ Auther is missing for every comment
 This occurs for every model detail page which contains a large number of comments and the response has to divide the comment into [0-99], [100-199]...and then all the user in it will be `user: ""`
 
 
-## Other bugs found
+## Other issues found
+
 #### Sorting
-In Make detial page 
-`e.g. https://buggy.justtestit.org/make/c0bm09bgagshpkqbsuag`, 
-Mode or Rand doesn't call any function to sort it in any way, and Votes will call `c0bm09bgagshpkqbsuag?modelsPage=1&modelsOrderBy=random`which will sort it by vote count in random order.
+In Make detial page `e.g. https://buggy.justtestit.org/make/c0bm09bgagshpkqbsuag`, the Mode or Rank doesn't call any function to sort it in any order, and Votes will call `c0bm09bgagshpkqbsuag?modelsPage=1&modelsOrderBy=random`which will sort it by vote count in random order.
 
 #### Navigating
 Logout button doesn't work when it's on the overall rating page `https://buggy.justtestit.org/overall`
@@ -87,7 +91,33 @@ Error message for password validation is not user friendly `e.g. InvalidParamete
 #### Pagination
 
 No pagination or "load more" for the comments
-Next page button doesn't get disabled even if it's alreay page 6 of 5.
+The Next page button doesn't get disabled even if it's alreay page 6 of 5.
 
 #### Content
 The Max Speed for a Lamborghini shouldn't be 25km/h
+
+
+## Test appoach
+
+
+#### Manual testing phase
+
+ 1. Explore the web app from home page and top bar and observe the
+    changes in the url to get rough idea about the hierarchy of the
+    pages and put it into a mindmap.    
+ 2. For each kind of the pages, try the functionalities with valid data and prioritize them in the mindmap.
+ 3. Try with various data and actions to try to break it.
+ 4. Start with the high priority functions like voting and ranking, observe the communication between frontend and backend with inspect panel opened
+    in Chrome to figure out how those key API work.
+ 5. Open Insomnia to try the APIs for a better understanding of the authrorization and payloads for later use in automation.
+ 6. Try the app in more browsers like Safari or Firefox and with the mobile.
+ 7. Take notes for issues found.  
+
+#### Automation phase
+
+ - Automate the main workflow from sign-in, open a model detail page, all the way to comment and vote with hard-coded test data. 
+ - Add assertions and improve the stability.
+ - Create a few functions to generate test data like user and comments.
+ - Create a few functions on API level for sign-up, sign-in and voting for better stability and performance.
+ - Organzie the functions with page object mode for a better readibility and maintenance.
+ - Organize the tests with hooks and make sure the independency of each tests.
