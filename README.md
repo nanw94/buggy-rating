@@ -73,28 +73,25 @@ This occurs for every model detail page which contains a large number of comment
 ## Other issues found
 
 #### Sorting
-In Make detial page `e.g. https://buggy.justtestit.org/make/c0bm09bgagshpkqbsuag`, the Mode or Rank doesn't call any function to sort it in any order, and Votes will call `c0bm09bgagshpkqbsuag?modelsPage=1&modelsOrderBy=random`which will sort it by vote count in random order.
+1. In Make detial page `e.g. https://buggy.justtestit.org/make/c0bm09bgagshpkqbsuag`, the Mode or Rank doesn't call any function to sort it in any order, and
+2. Votes will call `c0bm09bgagshpkqbsuag?modelsPage=1&modelsOrderBy=random`which will sort it by vote count in random order.
 
 #### Navigating
-Logout button doesn't work when it's on the overall rating page `https://buggy.justtestit.org/overall`
-Unable to get back to home page by clicking "Buggy Rating" in the upper left from any of the Make detial page 
-`e.g. https://buggy.justtestit.org/make/c0bm09bgagshpkqbsuag`
-as it's `href="/broken"`
-
-The link for twitter in the lower right conner of overall rating page is broken as `href="https://www.twitter-broken.com/">`
+1. Logout button doesn't work when it's on the overall rating page `https://buggy.justtestit.org/overall`
+2. Unable to get back to home page by clicking "Buggy Rating" in the upper left from any of the Make detial page `e.g. https://buggy.justtestit.org/make/c0bm09bgagshpkqbsuag` as it's `href="/broken"`
+3. The link for twitter in the lower right conner of overall rating page is broken as `href="https://www.twitter-broken.com/">`
 
 #### Validation
-Profile page, it doesn't validate if age input is not an integer e.g. `35.5` or `30+5`
-It validate the length of comment, address and phone but doesn't tell the limit
-Error message for password validation is not user friendly `e.g. InvalidParameter: 1 validation error(s) found. - minimum field size of 6, ChangePasswordInput.PreviousPassword.`
+1. Profile page, it doesn't validate if age input is not an integer e.g. `35.5` or `30+5`
+2. It validate the length of comment, address and phone but doesn't tell the limit.
+3. Error message for password validation is not user friendly `e.g. InvalidParameter: 1 validation error(s) found. - minimum field size of 6, ChangePasswordInput.PreviousPassword.`
 
 #### Pagination
-
-No pagination or "load more" for the comments
-The Next page button doesn't get disabled even if it's alreay page 6 of 5.
+1. No pagination or "load more" for the comments.
+2. The Next page button doesn't get disabled even if it's alreay page 6 of 5.
 
 #### Content
-The Max Speed for a Lamborghini shouldn't be 25km/h
+1. The Max Speed for a Lamborghini shouldn't be 25km/h
 
 
 ## Test appoach
